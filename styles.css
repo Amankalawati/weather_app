@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#city-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+#search-btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#search-btn:hover {
+    background: #0056b3;
+}
+
+.error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.weather-info {
+    margin-bottom: 30px;
+}
+
+.weather-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#weather-icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    animation: fadeIn 1s;
+}
+
+p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.forecast {
+    margin-top: 20px;
+}
+
+.forecast-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.forecast-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    animation: slideIn 0.5s;
+}
+
+.forecast-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Dynamic backgrounds */
+.sunny {
+    background-image: url('https://source.unsplash.com/1600x900/?sunny');
+    background-size: cover;
+}
+
+.cloudy {
+    background-image: url('https://source.unsplash.com/1600x900/?cloudy');
+    background-size: cover;
+}
+
+.rainy {
+    background-image: url('https://source.unsplash.com/1600x900/?rainy');
+    background-size: cover;
+}
+
+.snowy {
+    background-image: url('https://source.unsplash.com/1600x900/?snowy');
+    background-size: cover;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .forecast-item {
+        min-width: auto;
+    }
+}
