@@ -1,36 +1,125 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <meta name="theme-color" content="#10182f">
+    <title>Atmos — Weather</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Weather Application </h1>
-        <div class="search-box">
-            <input type="text" id="city-input" placeholder="Enter city name">
-            <button id="search-btn">Search here</button>
-        </div>
-        <div id="error-message" class="error"></div>
-        <div id="current-weather" class="weather-info hidden">
-            <h2 id="city-name"></h2>
-            <div class="weather-details">
-                <img id="weather-icon" src="" alt="Weather Icon">
-                <div>
-                    <p id="temperature"></p>
-                    <p id="description"></p>
-                    <p id="humidity"></p>
-                    <p id="wind-speed"></p>
+<body class="default-weather">
+
+    <main class="container">
+
+        <header class="topbar">
+            <a class="brand" href="#">☁ Atmos</a>
+            <button id="unit-toggle" class="unit-toggle" type="button">
+                °C / °F
+            </button>
+        </header>
+
+        <section class="search-section">
+            <p class="eyebrow">YOUR WEATHER, REIMAGINED</p>
+            <h1>Feel the atmosphere.</h1>
+            <p class="subtitle">Discover the weather wherever you are.</p>
+
+            <form id="search-form" class="search-box">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="text"
+                    id="city-input"
+                    placeholder="Search a city..."
+                    aria-label="City name"
+                    autocomplete="off"
+                    required
+                >
+                <button id="search-btn" type="submit">Search</button>
+            </form>
+
+            <p id="error-message" class="error hidden" role="alert"></p>
+            <p id="loading-message" class="loading hidden">Reading the atmosphere...</p>
+        </section>
+
+        <section id="current-weather" class="weather-info hidden">
+
+            <div class="current-card glass">
+                <div class="current-top">
+                    <div>
+                        <p class="eyebrow">CURRENT CONDITIONS</p>
+                        <h2 id="city-name">Mumbai, IN</h2>
+                        <p id="local-time" class="muted"></p>
+                    </div>
+                    <span id="weather-label" class="weather-badge">Weather</span>
+                </div>
+
+                <div class="hero-weather">
+                    <img id="weather-icon" src="" alt="Weather icon">
+                    <div class="temperature-block">
+                        <p id="temperature" class="temperature">--°</p>
+                        <p id="description" class="description">Waiting for weather...</p>
+                    </div>
+                </div>
+
+                <div class="weather-stats">
+                    <article class="stat">
+                        <span class="stat-icon">💧</span>
+                        <div>
+                            <p class="muted">Humidity</p>
+                            <p id="humidity" class="stat-value">--%</p>
+                        </div>
+                    </article>
+
+                    <article class="stat">
+                        <span class="stat-icon">🌬️</span>
+                        <div>
+                            <p class="muted">Wind speed</p>
+                            <p id="wind-speed" class="stat-value">--</p>
+                        </div>
+                    </article>
+
+                    <article class="stat">
+                        <span class="stat-icon">🌡️</span>
+                        <div>
+                            <p class="muted">Feels like</p>
+                            <p id="feels-like" class="stat-value">--°</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-        <div id="forecast" class="forecast hidden">
-            <h3>5-Day Forecast</h3>
-            <div class="forecast-container"></div>
-        </div>
-    </div>
+
+        </section>
+
+        <section id="forecast" class="forecast hidden">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PLAN YOUR DAY</p>
+                    <h3>Hourly forecast</h3>
+                </div>
+                <span class="muted">Next 18 hours</span>
+            </div>
+
+            <div id="hourly-container" class="forecast-container hourly-container"></div>
+
+            <div class="section-heading daily-heading">
+                <div>
+                    <p class="eyebrow">COMING UP</p>
+                    <h3>Next 5 days</h3>
+                </div>
+            </div>
+
+            <div id="daily-container" class="daily-container"></div>
+
+        </section>
+
+        <footer class="footer">
+            <span>ATMOS · WEATHER, IN A NEW LIGHT</span>
+            <span>Powered by OpenWeatherMap</span>
+        </footer>
+
+    </main>
+
     <script src="weather.js"></script>
 </body>
 </html>
